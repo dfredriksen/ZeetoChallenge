@@ -31,4 +31,5 @@ vendor/bin/phpunit -c tests/phpunit.xml
 Add a unit test to make sure exact cards dealt no longer exist in stack
 Speed up performance of evaluation algorithm so it is not worst case O(n^m)
 Add Namespaces to classes
+Add unit tests to check for different winning combinations
 ```

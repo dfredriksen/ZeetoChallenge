@@ -18,21 +18,22 @@ class HoldEm
     {
         $this->stillPlaying = $playGame;
         $this->Evaluator = new \SpecialK\Evaluate\SevenEval();       
- 
+        $this->Deck = new Deck();
+
         while($this->stillPlaying)
         {
-            $this->Deck = new Deck();
             $this->Winner = null;
             $this->players = [];
             $this->community = [];
        
-            if(!$this->getPlayers())
+            if(!$this->getPlayersFromInput())
                 continue;
 
             $this->dealCommunity();
             $this->dealPlayers();
             $this->findWinner();
             $this->printGameResults();
+            $this->Deck = new Deck();
         }
     }
 
@@ -75,7 +76,7 @@ class HoldEm
 
     }
 
-    private function getPlayers()
+    public function getPlayersFromInput()
     {
         echo "How many players (Type 0 to quit)?: ";
         $number_players = readline();
@@ -154,6 +155,11 @@ class HoldEm
     public function getNumberPlayers()
     {
         return $this->number_players;
+    }
+
+    public function getPlayers()
+    {
+        return $this->players;
     }
 
     public function setPlayers($players)

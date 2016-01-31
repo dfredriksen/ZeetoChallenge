@@ -26,6 +26,9 @@
         <testsuite name="Card">
             <directory>Card</directory>
         </testsuite>
+        <testsuite name="HoldEm">
+            <directory>HoldEm</directory>
+        </testsuite>
     </testsuites>
 
     <filter>

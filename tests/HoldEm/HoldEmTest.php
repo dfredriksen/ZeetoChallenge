@@ -1,27 +1,37 @@
 <?php
 
-class CardTest extends PHPUnit_Framework_TestCase 
+class HoldEmTest extends PHPUnit_Framework_TestCase 
 {
     public function setUp()
     {
         require_once __DIR__ . '/../../src/classes/HoldEm.php';
     }
 
-    public function testCard()
+    public function testGame()
     {
       $HoldEm = new HoldEm(false);
       $HoldEmMock  = new ReflectionClass('HoldEm');
       $dealCommunity = $HoldEmMock->getMethod('dealCommunity');
       $dealCommunity->setAccessible(true);
+      $dealCommunity->invokeArgs($HoldEm,[]);
+      $community = $HoldEm->getCommunity();
+
+      $this->assertTrue(is_array($community));
+      $this->assertEquals(5,count($community));
+
+      $HoldEm->setNumberPlayers(2);
       $dealPlayers = $HoldEmMock->getMethod('dealPlayers');
       $dealPlayers->setAccessible(true);
-      $findWinner = $HoldEmMock->getMethod('findWinner');
-      $findWinner->setAccessible(true);   
+      $dealPlayers->invokeArgs($HoldEm, []);
+      $players = $HoldEm->getPlayers(); 
 
-      $dealCommunity->invokeArgs($HoldEm);
-      $dealPlayers->invokeArgs($HoldEm);
-      $findWinner->invokeArgs($HoldEm);
+      $this->assertEquals(2,count($players));
+      $this->assertTrue(is_array($players));
 
+      foreach($players as $Player)
+      {
+        $this->assertTrue($Player instanceOf Player);
+      }
  
     }
 }
