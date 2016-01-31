@@ -6,6 +6,9 @@ class Card
   private $suit = null;
   private $label = null;
   private $isRoyal = null;
+  private $suitLetter = null;
+  private $suits = ['♣','♦','♥','♠'];
+  private $suitLetters = ['♥'=>'h','♣'=>'c','♦'=>'d','♠'=>'s']; 
 
   function __construct($value, $suit, $label, $isRoyal)
   {
@@ -13,6 +16,7 @@ class Card
     $this->suit = $suit;
     $this->label = $label;
     $this->isRoyal = $isRoyal;
+    $this->suitLetter = $this->suitLetters[$suit];
   }
 
   public function getValue()
@@ -37,7 +41,17 @@ class Card
 
   public function printCard()
   {
-    echo $this->label . $this->suit;
+    echo $this->getCardPrintLabel();
+  }
+
+  public function getCardPrintLabel()
+  {
+    return $this->label . $this->suit;       
+  }
+
+  public function getCardEvalString()
+  {
+    return ($this->label == 10 ? 'T' : $this->label) . $this->suitLetter;
   }
 
 }

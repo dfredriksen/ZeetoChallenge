@@ -1,7 +1,6 @@
 <?php
 
-    include("src/classes/Card.php");
-    include("src/classes/Deck.php");
+    require __DIR__ . '/vendor/autoload.php';
     include("src/classes/HoldEm.php");
 
     $Game = new HoldEm();
