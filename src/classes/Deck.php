@@ -20,9 +20,7 @@ class Deck
             {
                 $Card = new Card(
                     $index, 
-                    $this->suits[$suitindex], 
-                    $this->labels[$index], 
-                    ($index > 10)
+                    $this->suits[$suitindex]
                 );
                 $this->cards[] = $Card;
             }            

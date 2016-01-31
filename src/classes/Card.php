@@ -7,15 +7,19 @@ class Card
   private $label = null;
   private $isRoyal = null;
   private $suitLetter = null;
-  private $suits = ['♣','♦','♥','♠'];
+  private $suits = ['♣'=>'♣','♦'=>'♦','♥'=>'♥','♠'=>'♠'];
   private $suitLetters = ['♥'=>'h','♣'=>'c','♦'=>'d','♠'=>'s']; 
+  private $labels = ['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
 
-  function __construct($value, $suit, $label, $isRoyal)
+  function __construct($value, $suit)
   {
+    if(!isset($this->suits[$suit]))
+        throw new InvalidArgumentException('Invalid suit');
+
+    $this->label = $this->labels[$value];
+    $this->isRoyal = ($value > 9);
     $this->value = $value == 0 ? 14 : $value;
     $this->suit = $suit;
-    $this->label = $label;
-    $this->isRoyal = $isRoyal;
     $this->suitLetter = $this->suitLetters[$suit];
   }
 

@@ -23,6 +23,9 @@
         <testsuite name="Deck">
             <directory>Deck</directory>
         </testsuite>
+        <testsuite name="Card">
+            <directory>Card</directory>
+        </testsuite>
     </testsuites>
 
     <filter>

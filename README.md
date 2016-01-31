@@ -29,4 +29,5 @@ vendor/bin/phpunit -c tests/phpunit.xml
 
 ```
 Add a unit test to make sure exact cards dealt no longer exist in stack
+Speed up performance of evaluation algorithm so it is not worst case O(n^m)
 ```

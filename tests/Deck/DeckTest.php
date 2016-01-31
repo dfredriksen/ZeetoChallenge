@@ -6,8 +6,6 @@ class DeckTest extends PHPUnit_Framework_TestCase
     {
         require __DIR__ . '/../../src/classes/Deck.php';
     }
-   private $suits = ['♣','♦','♥','♠'];
-  private $suitLetters = ['♥'=>'h','♣'=>'c','♦'=>'d','♠'=>'s']; 
  
     public function testDeck()
     {
@@ -68,4 +66,3 @@ class DeckTest extends PHPUnit_Framework_TestCase
 
     }
 }
-?>
