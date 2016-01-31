@@ -38,6 +38,15 @@ class CardTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Th',$cardstring);
         $this->assertTrue(!$isRoyal);
         $this->assertEquals('10♥', $label);
-       
+
+        $Card = new Card(8,'♠');
+        $label = $Card->getCardPrintLabel();
+        $isRoyal = $Card->isRoyal();
+
+        $cardstring = $Card->getCardEvalString();
+        $this->assertEquals('9s',$cardstring);
+        $this->assertTrue(!$isRoyal);
+        $this->assertEquals('9♠', $label);
+      
     }
 }

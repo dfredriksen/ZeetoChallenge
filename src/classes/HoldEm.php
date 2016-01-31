@@ -14,8 +14,9 @@ class HoldEm
     private $max_players = 20;
     private $number_players = null;
 
-    function __construct()
+    function __construct($playGame = true)
     {
+        $this->stillPlaying = $playGame;
         $this->Evaluator = new \SpecialK\Evaluate\SevenEval();       
  
         while($this->stillPlaying)
@@ -77,20 +78,21 @@ class HoldEm
     private function getPlayers()
     {
         echo "How many players (Type 0 to quit)?: ";
-        $this->number_players = readline();
+        $number_players = readline();
 
-        if(!is_numeric($this->number_players) || $this->number_players > $this->max_players )
+        if(!is_numeric($number_players) || $number_players > $this->max_players )
         {
             echo "\nPlayers must be an integer between 1 and " . $this->max_players . ".\n";
             return false;
         }
-        elseif($this->number_players < 1)
+        elseif($number_players < 1)
         {
             echo "\nGoodbye!\n\n";
             $this->stillPlaying = false;             
             return false;
         }
 
+        $this->setNumberPlayers($number_players);
         return true;
     }
 
@@ -132,6 +134,39 @@ class HoldEm
                 break;
             }
         }   
+    }
+
+    public function getDeck()
+    {
+        return $this->Deck;
+    }
+
+    public function getCommunity()
+    {
+        return $this->community;
+    }
+
+    public function getWinner()
+    {
+        return $this->Winner;
+    }
+
+    public function getNumberPlayers()
+    {
+        return $this->number_players;
+    }
+
+    public function setPlayers($players)
+    {
+        $this->players = $players;
+    }
+
+    public function setNumberPlayers($number_players)
+    {
+        if(!is_numeric($number_players) || $number_players < 1 || $number_players > $this->max_players)
+            throw new InvalidArgumentException('Invalid number of players, players must be greater than 0 and less than ' . $this->max_players);
+
+        $this->number_players = $number_players;
     }
 
 }
