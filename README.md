@@ -17,4 +17,16 @@ This will download all of the project dependencies. To begin the game, type
 php main.php
 ```
 
+## Executing tests
+
+From the root directory
+
+```
+vendor/bin/phpunit -c tests/phpunit.xml
+```
+
 ### Technical Debt
+
+```
+Add a unit test to make sure exact cards dealt no longer exist in stack
+```

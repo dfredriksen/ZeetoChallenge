@@ -1,4 +1,7 @@
 <?php
+
+require_once 'Card.php';
+
 class Deck
 {
     private $cards = [];
@@ -49,6 +52,26 @@ class Deck
         }
 
         return $dealt;
+    }
+
+    public function getCards()
+    {
+        return $this->cards;
+    }
+    
+    public function getStack()
+    {
+        return $this->stack;
+    }
+
+    public function getLabels()
+    {
+        return $this->labels;
+    }
+
+    public function getSuits()
+    {
+        return $this->suits;
     }
 
 }

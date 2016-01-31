@@ -7,6 +7,7 @@
         }
     ],
     "require": {
-        "lox/specialk-php": "dev-master"
+        "lox/specialk-php": "dev-master",
+        "phpunit/phpunit": "^4.8"
     }
 }
